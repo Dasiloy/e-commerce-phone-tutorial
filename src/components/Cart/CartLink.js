@@ -1,5 +1,18 @@
 import React from "react";
+import { useCartContext } from "../../context/cart";
+import { Link } from "react-router-dom";
 
 export default function CartLink() {
-  return <h1>hello from cart link</h1>;
+  const { cartItem } = useCartContext();
+  return (
+    <div className='cart-link-container'>
+      <Link to='/cart'>
+        cart
+        <span className='cart-link-total'>{cartItem}</span>
+      </Link>
+    </div>
+  );
 }
+
+
+

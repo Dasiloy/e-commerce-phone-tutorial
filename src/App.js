@@ -12,10 +12,15 @@ import Cart from "./pages/Cart";
 import LogIn from "./pages/Login";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
+import Header from './components/Header'
+import Alert from "./components/Alert";
+import PrivateRoute from "./components/PrivateRoute";
 
 export default function App() {
   return (
     <Router>
+      <Header />
+      <Alert/>
       <Switch>
         <Route exact path='/'>
           <Home />
@@ -29,15 +34,15 @@ export default function App() {
         <Route path='/login'>
           <LogIn />
         </Route>
-        <Route path='/checkout'>
+        <PrivateRoute path='/checkout'>
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route exact path='/products'>
           <Products />
         </Route>
         <Route
           path='/products/:id'
-          children={ProductDetails}></Route>
+          children={<ProductDetails/>}></Route>
         <Route path='*'>
           <Error />
         </Route>
